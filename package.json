@@ -1,0 +1,16 @@
+{
+  "name": "rolecall",
+  "version": "1.0.0",
+  "description": "Role call for game night",
+  "main": "bot.js",
+  "author": "Andrew",
+  "dependencies": {
+    "eris": "^0.11.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "license": "ISC"
+}
