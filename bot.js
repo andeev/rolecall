@@ -1,5 +1,5 @@
 const Eris = require('eris').Client;
-const bot = new Eris('Njc1NDM4MDY2ODY5MDc1OTcw.Xj3Iwg.ch46tbGAXSyAX07ImsO_UbAgp3Q');
+const bot = new Eris('');
 var play = 0;
 var l = 0;
 var f = 0;
