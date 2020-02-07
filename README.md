@@ -1,0 +1,2 @@
+# rolecall
+Rolecall discord bot
