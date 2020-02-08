@@ -21,178 +21,214 @@ bot.on("messageCreate", (msg) => {
 
 
     if(msg.content === "!roleHelp"){
-        bot.createMessage(msg.channel.id, "!play to add to play count\n!l to add to late count \n!f to add to fill count\n!m to add to maybe count\n!s to add to in spirit count \n!count to see current count \n!list to see players in the count ");
+        bot.createMessage(msg.channel.id, "!p to add to play count\n!l to add to late count \n!f to add to fill count\n!m to add to maybe count\n!s to add to in spirit count \n!count to see current count \n!list to see players in the count ");
     }
 
-    if(msg.content === "!play" || msg.content == "!l" || msg.content === "!f" || msg.content === "!m" || msg.content === "!s"){
+        try{
+    if(msg.content === "!p" || msg.content == "!l" || msg.content === "!f" || msg.content === "!m" || msg.content === "!s"){
     
         for (i = 0; i < playNames.length; i++){
-        if(playNames[i] === msg.member.user.username){
+        if(playNames[i] === msg.member.user.id){
             play--;
             for (j = i; j < playNames.length; j++){
-                if(playNames.length == 1){
-                    playNames[0] = "";
+                if(j < playNames.length){
+                console.log(playNames.length);
+                playNames[j] = playNames[j + 1];
                 }
-                else if(j<= playNames.length);
-                playNames[j] = playNames[j++];
+        
         }
+        playNames.length--;
     }
 }
 
+    
     for (i = 0; i < lateNames.length; i++){
-        if(lateNames[i] === msg.member.user.username){
+        if(lateNames[i] === msg.member.user.id){
             l--;
             for (j = i; j < lateNames.length; j++){
-                if(lateNames.length == 1){
-                    lateNames[0] = "";
-                }
-                else if(j< lateNames.length);
-                lateNames[j] = lateNames[j++];
+                 if(j< lateNames.length){
+                lateNames[j] = lateNames[j+1];
             }
         }
+        lateNames.length--;
+    }
     }
 
     for (i = 0; i < fillNames.length; i++){
-        if(fillNames[i] === msg.member.user.username){
+        if(fillNames[i] === msg.member.user.id){
             f--;
             for (j = i; j < fillNames.length; j++){
-                if(fillNames.length == 1){
-                    fillNames[0] = "";
-                }
-                else if(j< fillNames.length);
-                fillNames[j] = fillNames[j++];
+               if(j< fillNames.length){
+                fillNames[j] = fillNames[j + 1];
             }
         }
+        fillNames.length--;
+    }
     }
 
     for (i = 0; i < maybeNames.length; i++){
-        if(maybeNames[i] === msg.member.user.username){
+        if(maybeNames[i] === msg.member.user.id){
             m--;
             for (j = i; j < maybeNames.length; j++){
-                if(maybeNames.length == 1){
-                    maybeNames[0] = "";
-                }
-                else if(j< maybeNames.length);
-                maybeNames[j] = maybeNames[j++];
+            if(j< maybeNames.length){
+                maybeNames[j] = maybeNames[j+1];
             }
         }
+        maybeNames.length--;
+    }
     }
 
     for (i = 0; i < spiritNames.length; i++){
-        if(spiritNames[i] === msg.member.user.username){
+        if(spiritNames[i] === msg.member.user.id){
             s--;
+            
             for (j = i; j < spiritNames.length; j++){
-                if(spiritNames.length == 1){
-                    spiritNames[0] = "";
-                }
-                else if(j< spiritNames.length);
-                spiritNames[j] = spiritNames[j++];
+                if(j< spiritNames.length){
+                console.log(spiritNames.length);
+                spiritNames[j] = spiritNames[j+1];
             }
+            
         }
+        spiritNames.length--;
     }
-
-
-
+    }
+    }
+}catch(err){
+    //bot.createMessage(msg.channel.id, err);
 }
+try{
     if(msg.content === "!count") {
-        try{
+        
         bot.createMessage(msg.channel.id, "Count: " + play + " + " + l + "l + " + f + "f + " + m + "m + " + s + "s");
-        }catch(err){
-            bot.createMessage(msg.channel.id, err);
-        }
+        
     }
+}catch(err){
+    //bot.createMessage(msg.channel.id, err);
+}
 
-
-    if(msg.content === "!play"){
+try{
+    if(msg.content === "!p"){
        
        
         try{
-        playNames[play] = msg.member.user.username;
+        playNames[play] = msg.member.user.id;
         play++;
         bot.createMessage(msg.channel.id, "Count: " + play + " + " + l + "l + " + f + "f + " + m + "m + " + s + "s");
         }catch(err){
             bot.createMessage(msg.channel.id, err);
         }
     }
+}catch(err){
+    bot.createMessage(msg.channel.id, err);
+}try{
     if(msg.content === "!l"){
 
-        
         try{
-        lateNames[l] = msg.member.user.username;
+        lateNames[l] = msg.member.user.id;
         l++;
         bot.createMessage(msg.channel.id, "Count: " + play + " + " + l + "l + " + f + "f + " + m + "m + " + s + "s");
         }catch(err){
             bot.createMessage(msg.channel.id, err);
         }
     }
+}catch(err){
+    bot.createMessage(msg.channel.id, err);
+}try{
     if(msg.content === "!f"){
         try{
-        fillNames[f] = msg.member.user.username;
+        fillNames[f] = msg.member.user.id;
         f++;
         bot.createMessage(msg.channel.id, "Count: " + play + " + " + l + "l + " + f + "f + " + m + "m + " + s + "s");
         }catch(err){
             bot.createMessage(msg.channel.id, err);
         }
     }
+}catch(err){
+    bot.createMessage(msg.channel.id, err);
+}try{
     if(msg.content === "!m"){
         try{
-        maybeNames[m] = msg.member.user.username;
+        maybeNames[m] = msg.member.user.id;
         m++;
         bot.createMessage(msg.channel.id, "Count: " + play + " + " + l + "l + " + f + "f + " + m + "m + " + s + "s");
         }catch(err){
             bot.createMessage(msg.channel.id, err);
         }
     }
+}catch(err){
+    bot.createMessage(msg.channel.id, err);
+}try{
     if(msg.content === "!s"){
         try{
-        spiritNames[s] = msg.member.user.username;
+        spiritNames[s] = msg.member.user.id;
         s++;
         bot.createMessage(msg.channel.id, "Count: " + play + " + " + l + "l + " + f + "f + " + m + "m + " + s + "s");
         }catch(err){
             bot.createMessage(msg.channel.id, err);
         }
     }
+}catch(err){
+    bot.createMessage(msg.channel.id, err);
+}try{
     if(msg.content === "!list"){
         var playString = "Playing: ";
-        var lateString = "Late: ";
-        var fillString = "Fill: ";
-        var maybeString = "Maybe: ";
-        var spiritString = "In Spirit: ";
         
+        console.log(spiritNames.length);
         try{
         for (i = 0; i < playNames.length; i++){
-            playString = playString.concat(playNames[i]);
-            playString = playString.concat(" ");
+           // playString = playString.concat(playNames[i]);
+            var temp = bot.users.get(playNames[i]).username;
+            playString = playString.concat(temp);
+            playString = playString.concat(" | ");
+        
+    }
+
+        }catch(err){
+
+        //bot.createMessage(msg.channel.id, err);
+
+    }try{
+            playString = playString.concat("\nLate: ");
+        for (i = 0; i < lateNames.length; i++){
+           
+            var temp = bot.users.get(lateNames[i]).username;
+            playString = playString.concat(temp);
+            playString = playString.concat(" | ");
+        }
+    }catch(err){
+        //bot.createMessage(msg.channel.id, err);
+    }try{
+            playString = playString.concat("\nFill: ");
+        for (i = 0; i < fillNames.length; i++){
+            
+            playString = playString.concat(bot.users.get(fillNames[i]).username);
+            playString = playString.concat(" | ");
+        }
+    }catch(err){
+        //bot.createMessage(msg.channel.id, err);
+    }try{
+
+        playString = playString.concat("\nMaybe: ");
+        for (i = 0; i < maybeNames.length; i++){
+            playString = playString.concat(bot.users.get(maybeNames[i]).username);
+            playString = playString.concat(" | ");
+        }
+    }catch(err){
+        //bot.createMessage(msg.channel.id, err);
+    }try{
+        playString = playString.concat("\nIn Spirit: ");
+        for (i = 0; i < spiritNames.length; i++){
+            playString = playString.concat(bot.users.get(spiritNames[i]).username);
+            playString = playString.concat(" | ");
         }
         bot.createMessage(msg.channel.id, playString);
-
-        for (i = 0; i < lateNames.length; i++){
-            lateString = lateString.concat(lateNames[i]);
-            lateString = lateString.concat(" ");
-        }
-        bot.createMessage(msg.channel.id, lateString);
-
-        for (i = 0; i < fillNames.length; i++){
-            fillString = fillString.concat(fillNames[i]);
-            fillString = fillString.concat(" ");
-        }
-        bot.createMessage(msg.channel.id, fillString);
-
-        for (i = 0; i < maybeNames.length; i++){
-            maybeString = maybeString.concat(maybeNames[i]);
-            maybeString = maybeString.concat(" ");
-        }
-        bot.createMessage(msg.channel.id, maybeString);
-
-        for (i = 0; i < spiritNames.length; i++){
-            spiritString = spiritString.concat(spiritNames[i]);
-            spiritString = spiritString.concat(" ");
-        }
-        bot.createMessage(msg.channel.id, spiritString);
-        }catch(err){
-            bot.createMessage(msg.channel.id, err);
-        }
+    }catch(err){
+        //bot.createMessage(msg.channel.id, err);
     }
+}
+}catch(err){
+    //bot.createMessage(msg.channel.id, err);
+}try{
     if(msg.content === "!clear"){
         play = 0;
         l = 0;
@@ -212,7 +248,9 @@ bot.on("messageCreate", (msg) => {
         maybeString = "Maybe: ";
         spiritString = "In Spirit: ";
     }
-
+}catch(err){
+    bot.createMessage(msg.channel.id, err);
+}
 
 });
 bot.connect();
